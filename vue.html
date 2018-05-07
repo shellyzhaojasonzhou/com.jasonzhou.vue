@@ -6,16 +6,39 @@
 	<script type="text/javascript" src="vue.js"></script>
 </head>
 <body>
-	<div id="root"></div>
+	<!--数据绑定 事件绑定 v-on:简写@-->
+	<div @click="handlerClick" v-text="content" v-html="htmltemplate" id="root">{{msg}}</div>
+	<div id="root1" v-bind:title="title" @click="handlerClick">
+		{{name}}
+	</div>
 </body>
 <script type="text/javascript">
 	new Vue({
 		el:"#root",
 		data:{
-			msg:"我是赵香波"
+			msg:"我是赵香波",
+			content:'I am shellyzhao',
+			htmltemplate:"<h1>jasonzhou 是谁啊？</h1>"
+		},
+		methods:{
+			handlerClick:function() {
+				alert("你是猪吗？");
+				this.msg="no,我是shellyzhao";
+			}
 		}
 	});
-
-
+	new Vue({
+		el:"#root1",
+		data:{
+			title:"大家好，我是jasonzhou",
+			name:"jasonzhou"
+		},
+		methods:{
+			handlerClick:function() {
+				alert("yes");
+				this.msg="no,我是shellyzhao";
+			}
+		}
+	});	
 </script>
 </html>
